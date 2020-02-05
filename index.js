@@ -19,18 +19,12 @@ app.get("/", (req, res) => {
 
 app.delete("/:id", (req, res) => {
   const getId = parseInt(req.params.id);
-  console.log("id", getId);
 
-  const newTodos = todos.filter(index => index.id !== getId);
-  console.log(newTodos);
-  //   todos.splice(getId, 1);
-  //   console.log(newTodos);
-  //   todos = newTodos;
+  todos.splice(getId - 1, 1);
 
-  //   res.json(newTodos);
   res.send({
     message: `Your data is delete`,
-    data: newTodos
+    data: todos
   });
 });
 
