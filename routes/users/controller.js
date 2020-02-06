@@ -42,7 +42,20 @@ module.exports = {
     }
   },
   updateByEmail: (req, res) => {
-    res.status(200).send({ message: `Update User by Email Not yet Finis` });
+    const newUsers = [];
+    const getEmail = req.params.email;
+
+    users.forEach(element => {
+      if (element.email === getEmail) {
+        newUsers.push(req.body);
+      } else {
+        newUsers.push(element);
+      }
+    });
+    res.status(200).send({
+      message: `User By Username : ${getEmail} Have Been Edit`,
+      data: newUsers
+    });
   },
   deleteByEmail: (req, res) => {
     const getEmail = req.params.email;
